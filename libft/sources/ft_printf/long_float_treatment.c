@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   long_float_treatment.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:19:11 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/20 19:19:13 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:05:17 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 char	*parts_join(t_ldbl_cast dbl, t_floats *flt, t_printf *pf)
 {
@@ -45,7 +45,7 @@ char	*treatment_parts(t_printf *pf, t_floats *flt, char *str)
 		res = ft_strsub(str, 0, i);
 	else if (pf->prec > flt->len_e)
 	{
-		if (!(tmp = ft_memalloc(sizeof(char) * (pf->prec - flt->len_e + 1))))
+		if (!(tmp = ft_calloc(1, pf->prec - flt->len_e + 1)))
 			exit(1);
 		ft_memset(tmp, '0', pf->prec - flt->len_e);
 		if (!(res = ft_strjoin(str, tmp)))
@@ -118,7 +118,7 @@ char	*ft_str_dot_join(char *str1, char *str2)
 	len1 = ft_strlen(str1);
 	len2 = ft_strlen(str2);
 	len = len1 + len2;
-	if (!(res = ft_memalloc(sizeof(char) * (len + 2))))
+	if (!(res = ft_calloc(1, len + 2)))
 		return (NULL);
 	ft_strcpy(res, str1);
 	res[len1] = '.';

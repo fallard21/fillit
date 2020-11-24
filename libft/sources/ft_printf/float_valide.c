@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   float_valide.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 22:00:40 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 00:28:32 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 16:58:15 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void		error_f(t_printf *pf, t_ldbl_cast dbl)
 {
@@ -54,15 +54,6 @@ int			valide_float(t_ldbl_cast dbl)
 	return (0);
 }
 
-t_floats	*create_struct(void)
-{
-	t_floats	*res;
-
-	if (!(res = ft_memalloc(sizeof(t_floats))))
-		return (NULL);
-	return (res);
-}
-
 void		pf_free_floats(t_floats *flt)
 {
 	ft_memdel((void **)&flt->first);
@@ -70,5 +61,4 @@ void		pf_free_floats(t_floats *flt)
 	ft_memdel((void **)&flt->mant);
 	ft_memdel((void **)&flt->one);
 	ft_memdel((void **)&flt->two);
-	ft_memdel((void **)&flt);
 }

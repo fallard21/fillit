@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   long_arithmetic_int.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:21:18 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/20 19:21:21 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:03:42 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	la_multiple(t_floats *flt, int exp)
 {
@@ -18,9 +18,9 @@ void	la_multiple(t_floats *flt, int exp)
 	int	i;
 
 	flt->len_s = INTEGER_PART;
-	if (!(flt->first = ft_memalloc(sizeof(int) * (flt->len_s))))
+	if (!(flt->first = ft_calloc(sizeof(int), (flt->len_s))))
 		exit(1);
-	if (!(tmp = ft_memalloc(sizeof(int) * (flt->len_s))))
+	if (!(tmp = ft_calloc(sizeof(int), (flt->len_s))))
 		exit(1);
 	i = 0;
 	pow_of_2(tmp, flt->len_s, exp);

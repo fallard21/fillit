@@ -3,23 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tima <tima@student.42.fr>                  +#+  +:+       +#+         #
+#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 15:43:25 by fallard           #+#    #+#              #
-#    Updated: 2020/06/19 21:15:17 by tima             ###   ########.fr        #
+#    Updated: 2020/11/24 19:32:42 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-HLIB_NAME = libft.h
-HPF_NAME = ft_printf.h
+HEAD_NAME = libft.h ft_printf.h ft_printf_private.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIB_DIR = srcs/lib/
-PF_DIR = srcs/printf/
+SRC_DIR = sources/
+LIB_DIR = $(SRC_DIR)ft_libc/
+PF_DIR = $(SRC_DIR)ft_printf/
 INC_DIR = includes/
 
 SRC_LIB = ft_atoi.c \
@@ -31,6 +31,7 @@ ft_isdigit.c \
 ft_isprint.c \
 ft_itoa.c \
 ft_memalloc.c \
+ft_calloc.c \
 ft_memccpy.c \
 ft_memchr.c \
 ft_memcmp.c \
@@ -69,7 +70,7 @@ ft_strnequ.c \
 ft_strnew.c \
 ft_strnstr.c \
 ft_strrchr.c \
-ft_strsplit.c \
+ft_split.c \
 ft_strstr.c \
 ft_strsub.c \
 ft_strtrim.c \
@@ -84,13 +85,15 @@ ft_lstdel.c \
 ft_lstadd.c \
 ft_lstiter.c \
 ft_lstmap.c \
-get_next_line.c
+get_next_line.c \
+ft_itoa_base.c \
+ft_ulltoa.c \
+ft_sort.c
 
 SRC_PF = ft_printf.c \
 parse.c \
 print_result.c \
 print_flags.c \
-base.c \
 pf_itoa.c \
 dec_numbers.c \
 dec_treatment.c \
@@ -105,10 +108,10 @@ long_float_treatment.c \
 print_bin.c \
 print_iso_time.c \
 print_iso_func.c \
-helpers.c
+helpers.c \
+pf_color.c
 
-HEAD_LIB = $(addprefix $(INC_DIR), $(HLIB_NAME))
-HEAD_PF = $(addprefix $(INC_DIR), $(HPF_NAME))
+HEADER = $(addprefix $(INC_DIR), $(HEAD_NAME))
 
 TMP_LIB = $(addprefix $(LIB_DIR), $(SRC_LIB:.c=.o))
 TMP_PF = $(addprefix $(PF_DIR), $(SRC_PF:.c=.o))
@@ -124,22 +127,22 @@ CN = \033[036m
 EOC = \033[0m
 
 all: $(NAME)
-	@printf "\n$(GR) >> $(NAME) created! <<$(EOC)\n"
-
-$(NAME): $(TMP_LIB) $(TMP_PF)
-	@ar rc $(NAME) $(TMP_LIB) $(TMP_PF)
 	
-%.o:%.c $(HEAD_LIB) $(HEAD_PF)
+$(NAME): $(TMP_LIB) $(TMP_PF) $(HEADER)
+	@ar rc $(NAME) $(TMP_LIB) $(TMP_PF)
+	@printf "\n$(GR)>> Libft created <<$(EOC)\n"
+
+%.o:%.c $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf "$(CN).$(EOC)"
 
 clean:
 	@rm -f $(TMP_LIB)
 	@rm -f $(TMP_PF)
-	@printf "$(YW)Libft: $(RD)Object files deleted!$(EOC)\n"
+	@printf "$(YW)Libft: $(RD)Object files deleted.$(EOC)\n"
 
 fclean: clean
 	@rm -f $(NAME)
-	@printf "$(YW)Libft: $(RD)$(NAME) and object files deleted!$(EOC)\n"
+	@printf "$(YW)Libft: $(RD)$(NAME) deleted.$(EOC)\n"
 
 re: fclean all

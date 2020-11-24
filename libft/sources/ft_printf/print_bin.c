@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_bin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:21:38 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/20 19:21:40 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:14:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	print_b(t_printf *pf)
 {
@@ -21,7 +21,7 @@ void	print_b(t_printf *pf)
 
 	n = va_arg(pf->args, uintmax_t);
 	hash = (pf->fhash && n != 0) ? 2 : 0;
-	if (!(res = base2(n)))
+	if (!(res = ft_itoa_base(n, 0, 2)))
 		exit(1);
 	if (pf->space)
 		res = treatment_bin(res);
@@ -51,7 +51,7 @@ char	*treatment_bin(char *str)
 
 	bin.s = get_num_space(str);
 	bin.max_len = ft_strlen(str) + bin.s + 1;
-	if (!(res = ft_memalloc(sizeof(char) * bin.max_len)))
+	if (!(res = ft_calloc(1, bin.max_len)))
 		exit(1);
 	i = bin.max_len - 2;
 	j = ft_strlen(str) - 1;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 21:18:50 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 17:54:32 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 17:00:52 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	print_width(int hash, int len, t_printf *pf)
 {

@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:46:23 by fallard           #+#    #+#             */
-/*   Updated: 2020/06/16 13:22:44 by tima             ###   ########.fr       */
+/*   Updated: 2020/08/17 19:40:28 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_free(char *str, char *del)
+char	*ft_strjoin_free(char *str1, char *str2, int flag)
 {
 	char	*res;
 	size_t	len;
 	size_t	i;
 	size_t	j;
 
-	if (!str || !del)
+	if (!str1 || !str2)
 		return (NULL);
-	len = ft_strlen(str) + ft_strlen(del) + 1;
-	if (!(res = ft_memalloc(sizeof(char) * len)))
+	len = ft_strlen(str1) + ft_strlen(str2) + 1;
+	if (!(res = ft_calloc(len, sizeof(char))))
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str[i])
-		res[j++] = str[i++];
+	while (str1[i])
+		res[j++] = str1[i++];
 	i = 0;
-	while (del[i])
-		res[j++] = del[i++];
-	free(del);
+	while (str2[i])
+		res[j++] = str2[i++];
+	if (flag == 1)
+		free(str1);
+	else
+		free(str2);
 	return (res);
 }

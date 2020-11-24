@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:19:22 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 01:23:39 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 17:13:06 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	print_o(t_printf *pf)
 {
@@ -21,7 +21,7 @@ void	print_o(t_printf *pf)
 
 	n = uspecifier(pf);
 	hash = (pf->fhash && n != 0) ? 1 : 0;
-	if (!(str = base8(n)))
+	if (!(str = ft_itoa_base(n, 0, 8)))
 		exit(1);
 	len = (n == 0 && !pf->fhash && !pf->prec) ? 0 : ft_strlen(str);
 	if (!pf->minus)
@@ -73,7 +73,7 @@ void	print_x(t_printf *pf)
 
 	n = uspecifier(pf);
 	hash = (pf->fhash && n != 0) ? 2 : 0;
-	str = (pf->conv == 'x') ? base16(n, 0) : base16(n, 1);
+	str = (pf->conv == 'x') ? ft_itoa_base(n, 0, 16) : ft_itoa_base(n, 1, 16);
 	if (!str)
 		exit(1);
 	len = (n == 0 && !pf->prec) ? 0 : ft_strlen(str);
@@ -100,7 +100,7 @@ void	print_p(t_printf *pf)
 	int			len;
 
 	n = va_arg(pf->args, uintmax_t);
-	if (!(str = base16(n, 0)))
+	if (!(str = ft_itoa_base(n, 0, 16)))
 		exit(1);
 	len = (n == 0 && !pf->prec) ? 2 : ft_strlen(str) + 2;
 	if (!pf->minus)

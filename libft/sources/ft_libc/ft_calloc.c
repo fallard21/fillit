@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 16:35:57 by fallard           #+#    #+#             */
-/*   Updated: 2020/11/13 17:22:16 by fallard          ###   ########.fr       */
+/*   Created: 2020/06/22 18:02:31 by tima              #+#    #+#             */
+/*   Updated: 2020/06/22 18:03:17 by tima             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-/*
-** >>----------------------------- MAIN FUNCTION -----------------------------<<
-*/
-int				ft_printf(const char *format, ...);
+void	*ft_calloc(size_t num, size_t size)
+{
+	void	*mem;
 
-#endif
+	mem = malloc(num * size);
+	if (!mem)
+		return (NULL);
+	ft_memset(mem, 0, num * size);
+	return (mem);
+}

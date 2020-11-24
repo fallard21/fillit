@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pf_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 20:48:57 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/18 18:36:50 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:07:27 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 int		get_uint_size(uintmax_t n, int mod)
 {
@@ -35,7 +35,7 @@ char	*ft_ulong_itoa(uintmax_t n, int mod)
 	if (n == 0 && mod == -1)
 		return (ft_strdup("-0"));
 	len = get_uint_size(n, mod);
-	if (!(arr = ft_memalloc(len + 1)))
+	if (!(arr = ft_calloc(1, len + 1)))
 		return (NULL);
 	if (mod < 0)
 		arr[0] = '-';
@@ -66,7 +66,7 @@ char	*long_int_to_char_rev(int *tab, int size)
 	int		i;
 
 	len = without_zero(tab, size);
-	if (!(res = ft_memalloc(sizeof(char) * (len * 4 + 1))))
+	if (!(res = ft_calloc(1, len * 4 + 1)))
 		exit(1);
 	iter.k = 0;
 	i = len - 1;
@@ -94,7 +94,7 @@ char	*long_int_to_char(int *tab, int size)
 	int		i;
 
 	len = without_zero(tab, size);
-	if (!(res = ft_memalloc(sizeof(char) * (len * 4 + 1))))
+	if (!(res = ft_calloc(1, len * 4 + 1)))
 		exit(1);
 	iter.k = 0;
 	i = 0;

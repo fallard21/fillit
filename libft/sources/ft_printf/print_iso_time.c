@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_iso_time.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 15:09:34 by cgamora           #+#    #+#             */
-/*   Updated: 2020/02/23 00:17:06 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:10:30 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 char		*ft_date(int n, char *str)
 {
@@ -41,7 +41,7 @@ void		print_k(t_printf *pf)
 	char	*str;
 
 	n = va_arg(pf->args, int);
-	if (!(str = ft_memalloc(sizeof(char) * 20)))
+	if (!(str = ft_calloc(1, 20)))
 		exit(1);
 	ft_date(n, str);
 	if (!pf->minus)

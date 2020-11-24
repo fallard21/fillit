@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_iso_func.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 20:24:46 by cgamora           #+#    #+#             */
-/*   Updated: 2020/02/22 22:55:19 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:09:40 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 int			ft_month(int ost, int flag)
 {

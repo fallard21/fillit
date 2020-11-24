@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   macros.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:57:22 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 00:35:56 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 17:05:25 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 int			dec_mod(intmax_t n)
 {

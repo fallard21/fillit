@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   floats.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:19:02 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 00:28:28 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 17:00:33 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	print_f(t_printf *pf)
 {
@@ -41,27 +41,26 @@ void	print_f(t_printf *pf)
 
 char	*get_long_float(t_printf *pf, t_ldbl_cast dbl, t_double_l n)
 {
-	t_floats	*flt;
+	t_floats	flt;
 	char		*res;
 	int			exp;
 
-	if (!(flt = create_struct()))
-		exit(1);
+	ft_memset(&flt, 0, sizeof(t_floats));
 	res = NULL;
 	if (n == 0)
-		float_n_zero(flt);
+		float_n_zero(&flt);
 	else
 	{
-		if (!(flt->mant = base2(dbl.t_parts.mantissa)))
+		if (!(flt.mant = ft_itoa_base(dbl.t_parts.mantissa, 0, 2)))
 			exit(1);
 		exp = dbl.t_parts.exponent - 16383;
 		if (exp < 0)
-			la_division(flt, dec_abs(exp));
+			la_division(&flt, dec_abs(exp));
 		else
-			la_multiple(flt, exp);
+			la_multiple(&flt, exp);
 	}
-	res = parts_join(dbl, flt, pf);
-	pf_free_floats(flt);
+	res = parts_join(dbl, &flt, pf);
+	pf_free_floats(&flt);
 	return (res);
 }
 

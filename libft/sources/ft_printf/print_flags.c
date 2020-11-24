@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:18:38 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 01:00:14 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/13 17:19:44 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	print_result(t_printf *pf)
-{
-	if (pf->conv == 'd' || pf->conv == 'i')
-		print_d(pf);
-	if (pf->conv == 'o')
-		print_o(pf);
-	if (pf->conv == 'u')
-		print_u(pf);
-	if (pf->conv == 'x' || pf->conv == 'X')
-		print_x(pf);
-	if (pf->conv == 'f' || pf->conv == 'F')
-		print_f(pf);
-	if (pf->conv == 'c')
-		print_c(pf);
-	if (pf->conv == 's')
-		print_s(pf);
-	if (pf->conv == 'p')
-		print_p(pf);
-	if (pf->conv == 37)
-		print_percent(pf);
-	if (pf->conv == 'b')
-		print_b(pf);
-	if (pf->conv == 'k')
-		print_k(pf);
-}
+#include "ft_printf_private.h"
 
 void	print_s(t_printf *pf)
 {
@@ -73,4 +47,30 @@ void	print_c(t_printf *pf)
 		print_width(0, 1, pf);
 	pf->tmp = (pf->width > 1) ? pf->width : 1;
 	pf->len = pf->len + pf->tmp;
+}
+
+void	print_result(t_printf *pf)
+{
+	if (pf->conv == 'd' || pf->conv == 'i')
+		print_d(pf);
+	else if (pf->conv == 'o')
+		print_o(pf);
+	else if (pf->conv == 'u')
+		print_u(pf);
+	else if (pf->conv == 'x' || pf->conv == 'X')
+		print_x(pf);
+	else if (pf->conv == 'f' || pf->conv == 'F')
+		print_f(pf);
+	else if (pf->conv == 'c')
+		print_c(pf);
+	else if (pf->conv == 's')
+		print_s(pf);
+	else if (pf->conv == 'p')
+		print_p(pf);
+	else if (pf->conv == 37)
+		print_percent(pf);
+	else if (pf->conv == 'b')
+		print_b(pf);
+	else if (pf->conv == 'k')
+		print_k(pf);
 }

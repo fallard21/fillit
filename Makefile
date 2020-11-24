@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tima <tima@student.42.fr>                  +#+  +:+       +#+         #
+#    By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/28 14:11:10 by fallard           #+#    #+#              #
-#    Updated: 2020/06/20 00:15:26 by tima             ###   ########.fr        #
+#    Updated: 2020/11/24 20:05:23 by fallard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ LIB = $(addprefix $(LIB_DIR), $(LIB_NAME))
 
 INCLUDES = -I $(INC_DIR) -I $(LIB_DIR)$(INC_DIR)
 
-all: $(LIB) $(NAME)
-	@printf "$(CN)>> $(NAME) created! <<$(EOC)\n"
+all: $(LIB) $(NAME) $(HEADER)
+	@printf "$(CN)>> $(NAME) created <<$(EOC)\n"
 
 $(NAME): $(TMP)
 	@$(CC) $(FLAGS) -o $(NAME) $(TMP) $(INCLUDES) $(LIB)
@@ -60,12 +60,12 @@ $(LIB):
 clean:
 	@make clean -C libft/
 	@rm -f $(TMP)
-	@printf "$(YW)Fillit: $(RD)Object files deleted!\n$(EOC)"
+	@printf "$(YW)Fillit: $(RD)Object files deleted\n$(EOC)"
 
 fclean: clean
 	@make fclean -C libft/
 	@rm -f $(NAME)
-	@printf "$(YW)Fillit: $(RD)$(NAME) and object files deleted!\n$(EOC)"
+	@printf "$(YW)Fillit: $(RD)$(NAME) and object files deleted\n$(EOC)"
 
 re: fclean all
 

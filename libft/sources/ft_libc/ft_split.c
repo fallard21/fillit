@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 15:20:18 by fallard           #+#    #+#             */
-/*   Updated: 2020/05/29 22:16:56 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/24 19:29:46 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_words(char const *str, char c)
+static int	count_words(char const *str, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -34,7 +34,7 @@ static int		count_words(char const *str, char c)
 	return (j);
 }
 
-static int		word_len(char const *s, char c)
+static int	word_len(char const *s, char c)
 {
 	size_t	i;
 	size_t	len;
@@ -51,21 +51,21 @@ static int		word_len(char const *s, char c)
 	return (len);
 }
 
-static char		**split_error(char **fresh, size_t count)
+char		**ft_freesplit(char ***str)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < count)
+	if (*str)
 	{
-		free(fresh[i]);
-		i = i + 1;
+		while ((*str)[i])
+			ft_memdel((void**)&(*str)[i++]);
 	}
-	free(fresh);
+	ft_memdel((void**)&(*str));
 	return (NULL);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		i;
@@ -75,14 +75,14 @@ char			**ft_strsplit(char const *s, char c)
 
 	i = 0;
 	k = 0;
-	if (!s || !(arr = ft_memalloc(sizeof(char*) * (count_words(s, c) + 1))))
+	if (!s || !(arr = ft_calloc(sizeof(char*), count_words(s, c) + 1)))
 		return (NULL);
 	len = count_words(s, c);
 	while (i < len)
 	{
 		j = 0;
 		if (!(arr[i] = ft_strnew(word_len(&s[k], c))))
-			return(split_error(arr, i));
+			return (ft_freesplit(&arr));
 		while (s[k] == c)
 			k = k + 1;
 		while (s[k] != c && s[k])

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   dec_numbers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:20:15 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/20 19:20:17 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 16:54:02 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	print_d(t_printf *pf)
 {

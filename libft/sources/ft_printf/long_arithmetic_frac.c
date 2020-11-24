@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   long_arithmetic_frac.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:07:02 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/18 21:07:28 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 17:03:07 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	part_after_dot(t_floats *flt, int i)
 {
@@ -19,14 +19,14 @@ void	part_after_dot(t_floats *flt, int i)
 	if (i == 64)
 	{
 		flt->len_e = 1;
-		if (!(flt->end = ft_memalloc(sizeof(int) * flt->len_e)))
+		if (!(flt->end = ft_calloc(sizeof(int), flt->len_e)))
 			exit(1);
 		return ;
 	}
 	flt->len_e = FRACTION_MIN;
-	if (!(flt->end = ft_memalloc(sizeof(int) * flt->len_e)))
+	if (!(flt->end = ft_calloc(sizeof(int), flt->len_e)))
 		exit(1);
-	if (!(tmp_end = ft_memalloc(sizeof(int) * flt->len_e)))
+	if (!(tmp_end = ft_calloc(sizeof(int), flt->len_e)))
 		exit(1);
 	tmp_end[0] = 5000;
 	while (flt->mant[i])
@@ -45,9 +45,9 @@ void	la_division(t_floats *flt, int exp)
 	int i;
 
 	flt->len_e = FRACTION_MAX;
-	if (!(tmp_end = ft_memalloc(sizeof(int) * flt->len_e)))
+	if (!(tmp_end = ft_calloc(sizeof(int), flt->len_e)))
 		exit(1);
-	if (!(flt->end = ft_memalloc(sizeof(int) * flt->len_e)))
+	if (!(flt->end = ft_calloc(sizeof(int), flt->len_e)))
 		exit(1);
 	tmp_end[0] = 5000;
 	pow_of_5(tmp_end, flt->len_e, exp);
@@ -60,17 +60,17 @@ void	la_division(t_floats *flt, int exp)
 		i++;
 	}
 	flt->len_s = 1;
-	if (!(flt->first = ft_memalloc(sizeof(int) * flt->len_s)))
+	if (!(flt->first = ft_calloc(sizeof(int), flt->len_s)))
 		exit(1);
 	free(tmp_end);
 }
 
 void	pow_of_5(int *res, int size, int pow)
 {
-	int				i;
-	int				j;
-	int				p;
-	unsigned int	tmp;
+	int			i;
+	int			j;
+	int			p;
+	uint32_t	tmp;
 
 	pow = pow - 1;
 	j = 1;

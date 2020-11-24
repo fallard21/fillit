@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   float_round_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 19:20:40 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/20 19:20:43 by fallard          ###   ########.fr       */
+/*   Updated: 2020/11/13 16:55:18 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_private.h"
 
 void	plus_one(t_floats *flt)
 {

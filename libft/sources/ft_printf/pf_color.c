@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   pf_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fallard <fallard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 16:35:41 by fallard           #+#    #+#             */
-/*   Updated: 2020/02/19 21:24:09 by fallard          ###   ########.fr       */
+/*   Created: 2020/11/13 16:26:57 by fallard           #+#    #+#             */
+/*   Updated: 2020/11/13 16:30:52 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int		ft_printf(const char *format, ...)
-{
-	t_printf	*pf;
-	int			len;
-
-	if (!(pf = ft_memalloc(sizeof(t_printf))))
-		return (-1);
-	pf->format = (char*)format;
-	pf->len = 0;
-	va_start(pf->args, format);
-	parse_format(pf);
-	va_end(pf->args);
-	len = pf->len;
-	free(pf);
-	return (len);
-}
+#include "ft_printf_private.h"
 
 void	ft_color(t_printf *pf, int a)
 {

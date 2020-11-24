@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tima <tima@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fallard <fallard@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 09:09:55 by marvin            #+#    #+#             */
-/*   Updated: 2020/06/20 00:34:02 by tima             ###   ########.fr       */
+/*   Updated: 2020/11/24 20:19:24 by fallard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 	t_tetmap	*tmap;
 
 	if (argc != 2)
-		ft_printf("usage: ./fillit (input 1 source file) <.txt>");
+		ft_printf("usage: ./fillit (input 1 source file) <.txt>\n");
 	else
 	{
 		if (!validate(argv[1]))
